@@ -1,3 +1,2 @@
-# Cloudflare Pages SPA rewrite rule
-# Forwards all restaurant paths to the shared engine while preserving HTTP 200
-/*    /index.html   200
+# Static restaurant menus use their own index.html files.
+# No global rewrite rule is required.
