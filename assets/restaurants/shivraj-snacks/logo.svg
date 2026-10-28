@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shivGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7b1d1d"/>
+      <stop offset="100%" stop-color="#9e2a2b"/>
+    </linearGradient>
+    <linearGradient id="fireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb703"/>
+      <stop offset="100%" stop-color="#fb8500"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#shivGrad)"/>
+  <circle cx="100" cy="100" r="82" stroke="url(#fireGrad)" stroke-width="2.5" fill="none" opacity="0.6"/>
+  <!-- Fire / Spicy Misal bowl motif -->
+  <path d="M66 112 C66 132, 134 132, 134 112 Z" fill="url(#fireGrad)"/>
+  <path d="M100 68 C108 80, 112 90, 100 102 C88 90, 92 80, 100 68 Z" fill="#fff" opacity="0.9"/>
+  <rect x="60" y="110" width="80" height="6" rx="3" fill="#fff"/>
+  <text x="100" y="158" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#ffffff" letter-spacing="1.5">SHIVRAJ SNACKS</text>
+  <text x="100" y="176" text-anchor="middle" font-family="'Mukta', sans-serif" font-size="11" font-weight="600" fill="#ffb703">शिवराज स्नॅक्स • कडक चव</text>
+</svg>

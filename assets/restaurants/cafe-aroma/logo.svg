@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cafeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3c2415"/>
+      <stop offset="100%" stop-color="#5a3821"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbd786"/>
+      <stop offset="100%" stop-color="#dca456"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#cafeGrad)"/>
+  <circle cx="100" cy="100" r="82" stroke="url(#amberGrad)" stroke-width="2.5" fill="none" opacity="0.5"/>
+  <!-- Coffee Cup & Steam -->
+  <path d="M72 100 L72 120 C72 130 82 136 100 136 C118 136 128 130 128 120 L128 100 Z" fill="url(#amberGrad)"/>
+  <path d="M128 105 C136 105 142 110 142 116 C142 122 136 126 128 126" stroke="url(#amberGrad)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M86 88 C84 80 92 76 90 68" stroke="url(#amberGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M100 88 C98 80 106 76 104 68" stroke="url(#amberGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M114 88 C112 80 120 76 118 68" stroke="url(#amberGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="100" y="162" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="17" font-weight="800" fill="#ffffff" letter-spacing="2">CAFÉ AROMA</text>
+  <text x="100" y="178" text-anchor="middle" font-family="'Mukta', sans-serif" font-size="11" font-weight="600" fill="#dca456">कॅफे अरोमा आणि बेकरी</text>
+</svg>

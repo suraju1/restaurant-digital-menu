@@ -1,0 +1,74 @@
+/**
+ * QR Digital Menu - Print Stylesheet
+ * For Restaurant Table QR Stands, Acrylic Tents & Table Cards
+ */
+
+@media print {
+  /* Hide interactive web chrome */
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print,
+  .app-header,
+  .search-wrapper,
+  .categories-wrapper,
+  .floating-cart-btn,
+  .modal-overlay,
+  .cart-modal,
+  .app-footer,
+  .qr-controls-card {
+    display: none !important;
+  }
+
+  /* Table Stand Card Layout */
+  .print-card-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    page-break-inside: avoid;
+  }
+
+  .qr-stand-card {
+    border: 2px solid #2d1d4b !important;
+    border-radius: 20px !important;
+    padding: 24px !important;
+    text-align: center !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+  }
+
+  .qr-stand-card .qr-canvas-wrap {
+    margin: 16px auto !important;
+    padding: 12px !important;
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    display: inline-block !important;
+  }
+
+  .qr-stand-card h2 {
+    color: #2d1d4b !important;
+    font-size: 20pt !important;
+    margin-bottom: 4px !important;
+  }
+
+  .qr-stand-card .table-badge-print {
+    display: inline-block !important;
+    background: #d2b64f !important;
+    color: #2d1d4b !important;
+    font-weight: bold !important;
+    font-size: 14pt !important;
+    padding: 4px 16px !important;
+    border-radius: 999px !important;
+    margin-top: 8px !important;
+  }
+
+  .qr-stand-card p {
+    color: #555555 !important;
+    font-size: 11pt !important;
+  }
+}

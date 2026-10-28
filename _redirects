@@ -1,0 +1,3 @@
+# Cloudflare Pages SPA rewrite rule
+# Forwards all restaurant paths to the shared engine while preserving HTTP 200
+/*    /index.html   200

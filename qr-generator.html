@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Restaurant Table QR Studio &amp; Card Generator</title>
+  <meta name="description" content="Generate and print high-resolution table QR cards for restaurants and cafes.">
+  <meta name="theme-color" content="#2d1d4b">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/print.css">
+
+  <style>
+    .qr-studio-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .qr-controls-card {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      border: 1.5px solid var(--color-border);
+      margin-bottom: 30px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .form-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .form-control {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-border);
+      font-size: 0.95rem;
+      background: var(--color-surface);
+    }
+
+    .qr-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .qr-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 990px) {
+      .qr-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .qr-stand-card {
+      background-color: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--transition-fast);
+      position: relative;
+    }
+
+    .qr-stand-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .url-warning-box {
+      background-color: #fffbeb;
+      border: 1.5px solid #f59e0b;
+      color: #92400e;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="qr-studio-wrap">
+
+    <!-- Top Navigation -->
+    <header class="no-print" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+      <a href="index.html" class="category-pill" style="text-decoration: none;">
+        <span>← Back to Menu</span>
+      </a>
+      <h1 class="restaurant-name" style="font-size: 1.5rem;">Table QR Studio</h1>
+      <span style="font-size: 0.85rem; color: var(--color-muted); font-weight: 600;">v1.0 Ready</span>
+    </header>
+
+    <!-- Controls Panel -->
+    <section class="qr-controls-card no-print" aria-label="QR Code Generator Settings">
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin-bottom: 16px;">
+        ⚙️ Print &amp; QR Settings
+      </h2>
+
+      <!-- Production Base URL warning -->
+      <div class="url-warning-box" id="url-warning">
+        ⚠️ <strong>Notice:</strong> Your Base URL looks like a development or placeholder URL. Before printing real table stickers for clients, enter the deployed Cloudflare Pages URL (e.g. <code>https://my-menu.pages.dev</code>).
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="select-restaurant" class="form-label">Select Restaurant</label>
+          <select id="select-restaurant" class="form-control">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="input-base-url" class="form-label">Production Base URL</label>
+          <input 
+            type="text" 
+            id="input-base-url" 
+            class="form-control" 
+            placeholder="https://YOUR-PROJECT.pages.dev"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="select-table-mode" class="form-label">Tables to Generate</label>
+          <select id="select-table-mode" class="form-control">
+            <option value="all">All Configured Tables</option>
+            <option value="single">Single Table Only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row" id="single-table-wrap" style="display: none;">
+        <div class="form-group">
+          <label for="select-single-table" class="form-label">Choose Specific Table</label>
+          <select id="select-single-table" class="form-control">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+        <button type="button" class="btn-add" id="btn-print-cards" style="padding: 12px 24px;">
+          <span>🖨️ Print All Table Cards</span>
+        </button>
+        <button type="button" class="category-pill" id="btn-download-all">
+          <span>📦 Batch Download PNGs</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- QR Cards Grid for Preview & Printing -->
+    <main class="qr-grid print-card-grid" id="qr-cards-container" aria-label="Table QR Cards">
+      <!-- Generated dynamically by qr-generator.js -->
+    </main>
+
+  </div>
+
+  <!-- QR Script & App Modules -->
+  <script src="js/lib/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="data/registry.js"></script>
+  <script src="data/restaurants/sai-hotel.js"></script>
+  <script src="data/restaurants/cafe-aroma.js"></script>
+  <script src="data/restaurants/shivraj-snacks.js" charset="UTF-8"></script>
+  <script src="data/restaurants/new-madina.js" charset="UTF-8"></script>
+  <script src="js/utils.js" charset="UTF-8"></script>
+  <script src="js/qr-generator.js" charset="UTF-8"></script>
+</body>
+</html>

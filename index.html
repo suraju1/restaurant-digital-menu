@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Digital QR Menu &amp; WhatsApp Ordering</title>
+  <meta name="description" content="Instant digital QR menu and WhatsApp ordering for restaurants, cafes, and food businesses.">
+  <meta name="theme-color" content="#2d1d4b">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/restaurants/sai-hotel/logo.svg">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+  <div class="app-container" id="app-root">
+    
+    <!-- Restaurant Header & Table Indicator -->
+    <header class="restaurant-header" id="restaurant-header-mount" aria-label="Restaurant Header">
+      <!-- Populated dynamically by RestaurantLoader -->
+      <div class="restaurant-top-bar">
+        <div class="restaurant-branding">
+          <div class="restaurant-logo" style="background:#eae5e0; animation: pulse 1.5s infinite;"></div>
+          <div class="restaurant-title-wrap">
+            <span class="restaurant-name">Loading Menu...</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search Bar Component (Screenshot 1) -->
+    <section class="search-wrapper" aria-label="Search Menu">
+      <form class="search-form" id="search-form" role="search">
+        <div class="search-pill-container">
+          <span class="search-icon-accent" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Search dosa, uttapam, coffee..." 
+            autocomplete="off"
+            aria-label="Search menu items by English or Marathi name"
+          />
+          <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="Clear search input">✕</button>
+          <button type="submit" class="search-submit-btn" id="search-submit-btn">Search</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Category Filter Pills (Screenshot 1) -->
+    <nav class="categories-wrapper" aria-label="Menu Categories">
+      <div class="categories-container" id="categories-container" role="tablist">
+        <!-- Rendered dynamically by MenuRenderer -->
+      </div>
+    </nav>
+
+    <!-- Menu Section Header (Screenshot 1) -->
+    <section class="menu-section-header" aria-labelledby="menu-section-title">
+      <div class="menu-title-row">
+        <span class="menu-icon-accent" aria-hidden="true">
+          <!-- Food Tray / Cloche SVG matching screenshot -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 14v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1c0-3.87 3.13-7 7-7s7 3.13 7 7zm2 3H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2zM12 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+          </svg>
+        </span>
+        <h2 class="menu-title" id="menu-section-title">Our Menu</h2>
+      </div>
+      <p class="menu-subtitle" id="menu-section-subtitle">Freshly made · Served with chutney &amp; sambar</p>
+    </section>
+
+    <!-- Food Cards Grid (Screenshot 1 & 2) -->
+    <main class="menu-grid" id="menu-items-grid" aria-label="Menu Items">
+      <!-- Rendered dynamically by MenuRenderer -->
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div id="footer-fssai" class="fssai-pill" style="display: none;"></div>
+      <p id="footer-address"></p>
+      
+      <div id="demo-switcher-wrap" style="margin-top: 6px;"></div>
+
+      <nav class="footer-nav" aria-label="Quick links">
+        <a href="index.html" class="footer-link">Menu Home</a>
+        <a href="qr-generator.html" class="footer-link">Table QR Studio</a>
+        <a href="docs/NEW_RESTAURANT_SETUP.md" target="_blank" class="footer-link">Add Restaurant Guide</a>
+      </nav>
+
+      <p style="font-size: 0.76rem; color: #a097a8; margin-top: 8px;">
+        Powered by Digital QR Menu &bull; Instant WhatsApp Ordering Platform
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Floating Cart Button (Screenshot 1 & 2) -->
+  <button 
+    type="button" 
+    class="floating-cart-btn hidden" 
+    id="floating-cart-btn" 
+    aria-label="View Order Cart"
+  >
+    <span class="floating-cart-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/>
+      </svg>
+    </span>
+    <span>Cart</span>
+    <span class="cart-count-badge" id="floating-cart-count">0</span>
+  </button>
+
+  <!-- Cart Modal / Checkout Drawer (Screenshot 3) -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true"></div>
+
+  <section 
+    class="cart-modal" 
+    id="cart-modal" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-labelledby="cart-heading"
+  >
+    <!-- Cart Header -->
+    <div class="cart-header">
+      <div class="cart-header-title" id="cart-heading">
+        <span class="cart-bag-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/>
+          </svg>
+        </span>
+        <span>Your Order</span>
+      </div>
+      <button type="button" class="cart-close-btn" id="cart-close-btn" aria-label="Close Order Cart">✕</button>
+    </div>
+
+    <!-- Scrollable Items List (Screenshot 3) -->
+    <div class="cart-items-container" id="cart-items-container">
+      <!-- Populated dynamically by RestaurantCart -->
+    </div>
+
+    <!-- Dashed Separator -->
+    <div class="dashed-separator"></div>
+
+    <!-- Total Row (Screenshot 3) -->
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cart-total-amount">₹0</span>
+    </div>
+
+    <!-- Order Type Selection (Screenshot 3) -->
+    <div class="order-type-section">
+      <div class="section-label">
+        <span class="section-label-icon" aria-hidden="true">🛵</span>
+        <span>Order type</span>
+      </div>
+      <div class="order-types-grid" id="order-types-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Table Number Section (Screenshot 3) -->
+    <div class="table-number-section" id="table-number-section">
+      <div class="section-label">
+        <span class="section-label-icon" aria-hidden="true">🪑</span>
+        <span>Table Number</span>
+      </div>
+      <div class="table-input-wrap">
+        <input 
+          type="text" 
+          id="table-number-input" 
+          class="table-input" 
+          placeholder="e.g. 12" 
+          maxlength="10"
+          autocomplete="off"
+        />
+        <p class="table-helper-text" id="table-helper-text"></p>
+      </div>
+    </div>
+
+    <!-- WhatsApp Order Button (Screenshot 3) -->
+    <button type="button" class="btn-whatsapp-order" id="btn-whatsapp-order">
+      <span class="whatsapp-icon-btn" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.18-.47-.3z"/>
+        </svg>
+      </span>
+      <span>Place order on WhatsApp</span>
+    </button>
+    <p class="whatsapp-notice">
+      🔒 Opens WhatsApp directly with your order prefilled. No payment is taken online.
+    </p>
+  </section>
+
+  <!-- JavaScript Modules in Dependency Order -->
+  <script src="js/config.js" charset="UTF-8"></script>
+  <script src="data/registry.js" charset="UTF-8"></script>
+  <script src="data/restaurants/sai-hotel.js" charset="UTF-8"></script>
+  <script src="data/restaurants/cafe-aroma.js" charset="UTF-8"></script>
+  <script src="data/restaurants/shivraj-snacks.js" charset="UTF-8"></script>
+  <script src="data/restaurants/new-madina.js" charset="UTF-8"></script>
+  <script src="js/utils.js" charset="UTF-8"></script>
+  <script src="js/router.js" charset="UTF-8"></script>
+  <script src="js/restaurant-loader.js" charset="UTF-8"></script>
+  <script src="js/menu-renderer.js" charset="UTF-8"></script>
+  <script src="js/search-filter.js" charset="UTF-8"></script>
+  <script src="js/whatsapp.js" charset="UTF-8"></script>
+  <script src="js/cart.js" charset="UTF-8"></script>
+  <script src="js/app.js" charset="UTF-8"></script>
+</body>
+</html>

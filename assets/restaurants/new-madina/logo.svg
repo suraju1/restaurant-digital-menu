@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="madinaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#143626"/>
+      <stop offset="100%" stop-color="#1e4e37"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbd786"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#madinaGrad)"/>
+  <circle cx="100" cy="100" r="82" stroke="url(#goldGrad)" stroke-width="2.5" fill="none" opacity="0.6"/>
+  <!-- Dum Biryani Handi / Cloche Motif -->
+  <path d="M60 115 C60 82, 140 82, 140 115 Z" fill="url(#goldGrad)"/>
+  <rect x="52" y="118" width="96" height="8" rx="4" fill="url(#goldGrad)"/>
+  <circle cx="100" cy="76" r="7" fill="url(#goldGrad)"/>
+  <!-- Steam Curves -->
+  <path d="M90 65 C88 58 94 54 92 48" stroke="url(#goldGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M100 65 C98 58 104 54 102 48" stroke="url(#goldGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M110 65 C108 58 114 54 112 48" stroke="url(#goldGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="100" y="154" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#ffffff" letter-spacing="1.5">NEW MADINA</text>
+  <text x="100" y="174" text-anchor="middle" font-family="'Mukta', sans-serif" font-size="11" font-weight="600" fill="#d4af37">न्यू मदिना रेस्टॉरंट • दम बिर्याणी</text>
+</svg>

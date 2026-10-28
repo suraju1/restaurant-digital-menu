@@ -1,0 +1,73 @@
+/**
+ * QR Digital Menu - Design System Tokens
+ * Recreating the reference screenshot aesthetics with warm cream, deep purple, and golden yellow accents.
+ */
+:root {
+  /* Core Color Palette matching reference screenshots */
+  --color-background: #fbf7ee;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8f4ec;
+  --color-surface-hover: #fcf9f3;
+  
+  --color-primary: #2d1d4b;
+  --color-primary-hover: #40275f;
+  --color-primary-active: #221538;
+  --color-primary-rgb: 45, 29, 75;
+  
+  --color-accent: #d2b64f;
+  --color-accent-badge: #ddbe53;
+  --color-accent-light: #fef7db;
+  --color-accent-rgb: 210, 182, 79;
+  
+  --color-text: #2d1d4b;
+  --color-text-secondary: #564a66;
+  --color-muted: #82778c;
+  --color-muted-light: #a9a0b0;
+  
+  --color-border: #e7e3e8;
+  --color-border-subtle: #f0ebf1;
+  --color-border-focus: #2d1d4b;
+  
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #20bd59;
+  --color-whatsapp-rgb: 37, 211, 102;
+  
+  --color-danger: #d9383a;
+  --color-success: #2a9d8f;
+  
+  /* Radii */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-card: 28px;
+  --radius-pill: 999px;
+  
+  /* Elevation & Shadows */
+  --shadow-sm: 0 2px 8px rgba(45, 29, 75, 0.05);
+  --shadow-card: 0 8px 24px rgba(45, 29, 75, 0.08);
+  --shadow-card-hover: 0 12px 32px rgba(45, 29, 75, 0.13);
+  --shadow-floating: 0 10px 30px rgba(45, 29, 75, 0.18);
+  --shadow-modal: 0 24px 60px rgba(45, 29, 75, 0.28);
+  
+  /* Typography */
+  --font-family-base: 'Outfit', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-marathi: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+  
+  /* Spacing Scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Mobile Safe Areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}

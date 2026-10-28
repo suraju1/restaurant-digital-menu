@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Not Found — Digital Menu</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-container" style="text-align: center; padding-top: 60px;">
+    <div style="font-size: 4rem; margin-bottom: 12px;">🍽️🔍</div>
+    <h1 class="restaurant-name" style="font-size: 1.8rem; margin-bottom: 8px;">Restaurant Not Found</h1>
+    <p class="card-description" style="max-width: 420px; margin: 0 auto 24px;">
+      The digital menu or table code you are looking for could not be found. Please check the URL or choose a restaurant below.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto 28px;">
+      <a href="index.html?r=sai-hotel" class="btn-add" style="text-decoration:none; justify-content:center; padding:12px;">
+        <span>🍽️ Hotel Sai (South Indian)</span>
+      </a>
+      <a href="index.html?r=cafe-aroma" class="btn-add" style="text-decoration:none; justify-content:center; padding:12px;">
+        <span>☕ Café Aroma &amp; Bakery</span>
+      </a>
+      <a href="index.html?r=shivraj-snacks" class="btn-add" style="text-decoration:none; justify-content:center; padding:12px;">
+        <span>🌶️ Shivraj Snacks &amp; Fast Food</span>
+      </a>
+      <a href="index.html?r=new-madina" class="btn-add" style="text-decoration:none; justify-content:center; padding:12px;">
+        <span>🍗 New Madina Restaurant (Biryani &amp; Chinese)</span>
+      </a>
+    </div>
+
+    <a href="index.html" class="category-pill" style="text-decoration: none;">
+      <span>← Return to Platform Home</span>
+    </a>
+  </div>
+
+  <script>
+    // If opened directly on Cloudflare Pages or GitHub Pages with a slug in path, attempt smart redirection
+    (function() {
+      const path = window.location.pathname;
+      const parts = path.split('/').filter(Boolean);
+      if (parts.length > 0) {
+        const potentialSlug = parts[parts.length - 1];
+        if (potentialSlug && potentialSlug !== '404.html') {
+          // Redirect to index.html with query parameter
+          const search = window.location.search;
+          window.location.replace('index.html?r=' + encodeURIComponent(potentialSlug) + (search ? '&' + search.slice(1) : ''));
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
