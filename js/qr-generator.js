@@ -15,8 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnDownloadAll = document.getElementById('btn-download-all');
   const urlWarning = document.getElementById('url-warning');
 
-  // Initialize Base URL from APP_CONFIG or current origin
-  const defaultProdUrl = (window.APP_CONFIG && window.APP_CONFIG.productionBaseUrl) || 'https://menuclear.pages.dev';
+  // Auto-detect live URL if running on production (Cloudflare, domain, etc.)
+  let defaultProdUrl = (window.APP_CONFIG && window.APP_CONFIG.productionBaseUrl) || 'https://restaurant-digital-menu.surajubale11.workers.dev';
+  if (window.location.origin && window.location.origin.startsWith('http') && !window.location.origin.includes('localhost') && !window.location.origin.includes('127.0.0.1')) {
+    defaultProdUrl = window.location.origin;
+  }
   inputBaseUrl.value = defaultProdUrl;
 
   // Populate Restaurant Select

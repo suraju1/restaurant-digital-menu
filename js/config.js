@@ -4,8 +4,7 @@
  */
 const APP_CONFIG = {
   // Production base URL on Cloudflare Pages or custom domain.
-  // Update this with your actual deployed URL (e.g. 'https://my-menu.pages.dev')
-  productionBaseUrl: 'https://menuclear.pages.dev',
+  productionBaseUrl: 'https://restaurant-digital-menu.surajubale11.workers.dev',
 
   // Fallback default restaurant if no slug is specified in the URL
   defaultRestaurantSlug: 'sai-hotel',
